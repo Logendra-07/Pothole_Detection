@@ -2,12 +2,19 @@
 from ultralytics import YOLO
 from PIL import Image
 import numpy as np
+import streamlit as st
 
 MODEL_PATH = Path(__file__).resolve().parent / "models" / "best.pt"
-model = YOLO(str(MODEL_PATH))
+
+@st.cache_resource(show_spinner="Loading YOLOv8 pothole detection model...")
+def get_model():
+    if not MODEL_PATH.exists():
+        raise FileNotFoundError(f"Model file not found at {MODEL_PATH}")
+    return YOLO(str(MODEL_PATH))
 
 def detect_potholes(image, confidence=0.25):
 
+    model = get_model()
     image_array = np.array(image.convert("RGB"))
 
     results = model.predict(

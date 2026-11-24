@@ -1,9 +1,10 @@
-
+﻿from pathlib import Path
 from ultralytics import YOLO
 from PIL import Image
 import numpy as np
 
-model = YOLO("models/best.pt")
+MODEL_PATH = Path(__file__).resolve().parent / "models" / "best.pt"
+model = YOLO(str(MODEL_PATH))
 
 def detect_potholes(image, confidence=0.25):
 

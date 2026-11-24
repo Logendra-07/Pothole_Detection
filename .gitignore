@@ -1,0 +1,31 @@
+﻿# Virtual Environment
+.venv/
+venv/
+ENV/
+env/
+
+# Python Cache & Bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyd
+
+# Streamlit Local Secrets (Private API Keys)
+.streamlit/secrets.toml
+
+# Datasets and large zip files (100MB+ exceeds GitHub limit)
+*.zip
+data/pothole_dataset/*.zip
+data/pothole_dataset/extracted/train/
+data/pothole_dataset/extracted/valid/
+data/pothole_dataset/extracted/test/
+
+# Intermediate runs & outputs
+runs/
+outputs/
+
+# User uploads & OS files
+uploads/*
+!uploads/.gitkeep
+.DS_Store
+Thumbs.db
